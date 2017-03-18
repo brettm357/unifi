@@ -46,6 +46,8 @@ RUN curl -L -o unifi_sysvinit_all.deb http://www.ubnt.com/downloads/unifi/5.5.7-
 RUN dpkg --install unifi_sysvinit_all.deb
 
 # fix execstack warning on library
+RUN apt-get install -y \
+	execstack
 RUN execstack -c \
 	/usr/lib/unifi/lib/native/Linux/amd64/libubnt_webrtc_jni.so
 
