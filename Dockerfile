@@ -47,7 +47,7 @@ RUN dpkg --install unifi_sysvinit_all.deb
 
 # fix execstack warning on library
 RUN execstack -c \
-	/usr/lib/unifi/lib/native/Linux/amd64/libubnt_webrtc_jni.so && \
+	/usr/lib/unifi/lib/native/Linux/amd64/libubnt_webrtc_jni.so
 
 # Wipe out auto-generated data
 RUN rm -rf /var/lib/unifi/*
