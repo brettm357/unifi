@@ -54,11 +54,10 @@ RUN execstack -c \
 # Wipe out auto-generated data
 RUN rm -rf /var/lib/unifi/*
 
+# Volumes and Ports
+WORKDIR /usr/lib/unifi
+VOLUME /config
 EXPOSE 8080 8081 8443 8843 8880
-
-VOLUME ["/var/lib/unifi"]
-
-WORKDIR /var/lib/unifi
 
 ADD run.sh /run.sh
 RUN chmod 755 /run.sh
