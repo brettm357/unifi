@@ -1,4 +1,4 @@
-FROM phusion/baseimage:latest
+FROM debian:jessie
 MAINTAINER brettm357@me.com
 # Set correct environment variables
 ENV HOME /root
