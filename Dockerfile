@@ -37,8 +37,7 @@ RUN \
 
 RUN echo "deb http://http.debian.net/debian jessie-backports main" > /etc/apt/sources.list.d/jessie-backports.list
 RUN apt-get update
-RUN apt-get -t install jessie-backports
-RUN apt-get -y install openjdk-8-jre-headless
+RUN apt-get -t install jessie-backports openjdk-8-jre-headless
 
 # MongoDB
 RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10
