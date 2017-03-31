@@ -36,7 +36,7 @@ RUN \
 #ENV JAVA8_HOME /usr/lib/jvm/java-8-oracle
 
 RUN apt-get update
-RUN apt-get install openjdk-8-jdk-headless
+RUN apt-get install openjdk-8-jre-headless
 
 # MongoDB
 RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10
