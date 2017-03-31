@@ -25,15 +25,18 @@ RUN \
   apt-get dist-upgrade -y
 
 # Install Common Dependencies
-RUN apt-get -y install curl software-properties-common
+#RUN apt-get -y install curl software-properties-common
 
 # Install Oracle Java 8
-RUN echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections
-RUN add-apt-repository ppa:webupd8team/java && apt-get update
-RUN apt-get -y install oracle-java8-installer
-RUN update-java-alternatives -s java-8-oracle
-ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
-ENV JAVA8_HOME /usr/lib/jvm/java-8-oracle
+#RUN echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections
+#RUN add-apt-repository ppa:webupd8team/java && apt-get update
+#RUN apt-get -y install oracle-java8-installer
+#RUN update-java-alternatives -s java-8-oracle
+#ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
+#ENV JAVA8_HOME /usr/lib/jvm/java-8-oracle
+
+RUN apt-get update
+RUN apt-get install openjdk-8-jdk-headless
 
 # MongoDB
 RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10
