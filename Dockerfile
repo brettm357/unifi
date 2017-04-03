@@ -3,7 +3,7 @@ MAINTAINER brettm357@me.com
 
 # Set environment variables
 ENV DEBIAN_FRONTEND noninteractive
-ENV UNIFI_VERSION 5.6.2
+ENV UNIFI_VERSION 5.6.2-224554000b
 
 RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10 && \
   echo "deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen" \
