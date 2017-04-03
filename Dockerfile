@@ -19,16 +19,20 @@ RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10 && \
     openjdk-8-jre-headless && \
   apt-get --no-install-recommends -y install \
     jsvc \
-    mongodb-server && \
-  wget -nv https://www.ubnt.com/downloads/unifi/$UNIFI_VERSION/unifi_sysvinit_all.deb && \
-  dpkg --install unifi_sysvinit_all.deb && \
-  rm unifi_sysvinit_all.deb && \
-  apt-get -y autoremove wget && \
-  apt-get -q clean && \
-  rm -rf /var/lib/apt/lists/* /var/cache/apt/archives/*.deb /tmp/* /var/tmp/* 
+    prelink \
+    mongodb-server && \    
+  wget -nv https://www.ubnt.com/downloads/unifi/$UNIFI_VERSION/unifi_sysvinit_all.deb && \ 
+  dpkg --install unifi_sysvinit_all.deb && \ 
+  # fix WebRTC stack guard error 
+  execstack -c /usr/lib/unifi/lib/native/Linux/amd64/libubnt_webrtc_jni.so && \ 
+  rm unifi_sysvinit_all.deb && \ 
+  apt-get -y autoremove wget prelink && \ 
+  apt-get -q clean && \ 
+  rm -rf /var/lib/apt/lists/* /var/cache/apt/archives/*.deb /tmp/* /var/tmp/*  
+   
 
 # Forward ports
-EXPOSE 6789 8080 8443 8843 8880 
+EXPOSE 3478/udp 6789/tcp 8080/tcp 8081/tcp 8443/tcp 8843/tcp 8880/tcp 
 
 # Set internal storage volume
 VOLUME ["/usr/lib/unifi""]
@@ -44,7 +48,7 @@ CMD ["/usr/bin/supervisord"]
 
 
 
-#RUN echo "deb http://http.debian.net/debian jessie-backports main" > /etc/apt/sources.list.d/jessie-backports.list
+
 #RUN apt-get update
 #RUN apt-get -t install jessie-backports openjdk-8-jre-headless
 
