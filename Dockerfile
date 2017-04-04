@@ -9,19 +9,21 @@ RUN apt-get update -q && \
     apt-get upgrade -y && \
     apt-get dist-upgrade -y
     
-RUN apt-get -y install \
-    wget
+#RUN apt-get -y install \
+#    wget
     
-RUN wget -nv http://ftp.au.debian.org/debian/pool/main/g/gnupg2/gnupg2_2.1.18-6_all.deb && \
-    dpkg --install gnupg2_2.1.18-6_all.deb
+#RUN wget -nv http://ftp.au.debian.org/debian/pool/main/g/gnupg2/gnupg2_2.1.18-6_all.deb && \
+#    dpkg --install gnupg2_2.1.18-6_all.deb
 
-RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10 && \
-    echo "deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen" \
-    | tee -a /etc/apt/sources.list.d/mongodb.list && \
-    echo "deb http://ftp.au.debian.org/debian stretch main" \
+#RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10 && \
+#    echo "deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen" \
+#    | tee -a /etc/apt/sources.list.d/mongodb.list && \
+RUN  echo "deb http://ftp.au.debian.org/debian stretch main" \
     | tee -a /etc/apt/sources.list.d/stretch.list && \
     apt-get update -q && \
     apt-get -y install \
+      gnupg \
+      gnupg2 \
       openjdk-8-jre-headless && \
   #  rm /etc/apt/sources.list.d/stretch.list && \
   
