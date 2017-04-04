@@ -8,17 +8,11 @@ ENV UNIFI_VERSION 5.6.2-224554000b
 RUN apt-get update -q && \
     apt-get upgrade -y && \
     apt-get dist-upgrade -y
-    
-#RUN apt-get -y install \
-#    wget
-    
-#RUN wget -nv http://ftp.au.debian.org/debian/pool/main/g/gnupg2/gnupg2_2.1.18-6_all.deb && \
-#    dpkg --install gnupg2_2.1.18-6_all.deb
 
 #RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10 && \
 #    echo "deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen" \
 #    | tee -a /etc/apt/sources.list.d/mongodb.list && \
-RUN  echo "deb http://ftp.au.debian.org/debian stretch main" \
+RUN echo "deb http://ftp.au.debian.org/debian stretch main" \
     | tee -a /etc/apt/sources.list.d/stretch.list && \
     apt-get update -q && \
     apt-get -y install \
@@ -26,34 +20,24 @@ RUN  echo "deb http://ftp.au.debian.org/debian stretch main" \
       gnupg2 \
       openjdk-8-jre-headless && \
   #  rm /etc/apt/sources.list.d/stretch.list && \
+    apt-get --no-install-recommends -y install \
+      supervisor \
+      binutils \
+      jsvc \
+      prelink \
+      mongodb-server \
+      wget && \
+    
+    wget -nv https://www.ubnt.com/downloads/unifi/$UNIFI_VERSION/unifi_sysvinit_all.deb && \ 
+    dpkg --install unifi_sysvinit_all.deb && \
   
-  
-  
-  
-  
- # echo "deb http://ftp.debian.org/debian jessie-backports main" \
- #   | tee -a /etc/apt/sources.list.d/jessie-backports.list && \
- # apt-get update -q && \
-  apt-get --no-install-recommends -y install \
-    supervisor \
-    binutils && \
- # apt-get -t jessie-backports --no-install-recommends -y install \
- #   openjdk-8-jre-headless && \
-  apt-get --no-install-recommends -y install \
-    jsvc \
-    prelink \
-    mongodb-server \
-    wget && \
-  wget -nv https://www.ubnt.com/downloads/unifi/$UNIFI_VERSION/unifi_sysvinit_all.deb && \ 
-  dpkg --install unifi_sysvinit_all.deb && \ 
   # fix WebRTC stack guard error 
-  execstack -c /usr/lib/unifi/lib/native/Linux/amd64/libubnt_webrtc_jni.so && \ 
-  rm unifi_sysvinit_all.deb && \ 
-  apt-get -y autoremove wget prelink && \ 
-  apt-get -q clean && \ 
-  rm -rf /var/lib/apt/lists/* /var/cache/apt/archives/*.deb /tmp/* /var/tmp/*  
+    execstack -c /usr/lib/unifi/lib/native/Linux/amd64/libubnt_webrtc_jni.so && \ 
+    rm unifi_sysvinit_all.deb && \ 
+    apt-get -y autoremove wget prelink && \ 
+    apt-get -q clean && \ 
+    rm -rf /var/lib/apt/lists/* /var/cache/apt/archives/*.deb /tmp/* /var/tmp/*  
    
-
 # Forward ports
 EXPOSE 3478/udp 6789/tcp 8080/tcp 8081/tcp 8443/tcp 8843/tcp 8880/tcp 
 
