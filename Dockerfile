@@ -8,6 +8,9 @@ ENV UNIFI_VERSION 5.6.2-224554000b
 RUN apt-get update -q && \
     apt-get upgrade -y && \
     apt-get dist-upgrade -y
+    
+    wget -nv http://ftp.au.debian.org/debian/pool/main/g/gnupg2/gnupg2_2.1.18-6_all.deb && \
+    dkpg --install gnupg2_2.1.18-6_all.deb
 
 RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10 && \
     echo "deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen" \
@@ -16,7 +19,6 @@ RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10 && \
     | tee -a /etc/apt/sources.list.d/stretch.list && \
     apt-get update -q && \
     apt-get -y install \
-      gnupg2 \
       openjdk-8-jre-headless && \
   #  rm /etc/apt/sources.list.d/stretch.list && \
   
