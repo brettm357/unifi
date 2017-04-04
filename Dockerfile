@@ -15,11 +15,11 @@ RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10 && \
     echo "deb http://ftp.au.debian.org/debian/stretch main contrib non-free" \
     | tee -a /etc/apt/sources.list.d/stretch.list && \
     apt-get update && \
-    apt-get install -y --no-install-recommends \
+    apt-get install -y \
       gunpg && \
       gunpg1 && \
       openjdk-8-jre-headless && \
-    rm /etc/apt/sources.list.d/stretch.list && \
+  #  rm /etc/apt/sources.list.d/stretch.list && \
   
   
   
@@ -29,7 +29,6 @@ RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10 && \
  #   | tee -a /etc/apt/sources.list.d/jessie-backports.list && \
  # apt-get update -q && \
   apt-get --no-install-recommends -y install \
-    gunpg \
     supervisor \
     binutils \
     wget && \
