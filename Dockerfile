@@ -5,11 +5,16 @@ MAINTAINER brettm357@me.com
 ENV DEBIAN_FRONTEND noninteractive
 ENV UNIFI_VERSION 5.6.2-224554000b
 
+RUN apt-get update
+RUN apt-get upgrade
+RUN apt-get dist-upgrade
+
 RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10 && \
   echo "deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen" \
     | tee -a /etc/apt/sources.list.d/mongodb.list && \
   
-  echo 'deb http://ftp.au.debian.org/debian/ stretch main contrib non-free' > /etc/apt/sources.list.d/stretch.list && \
+  echo 'deb http://ftp.au.debian.org/debian/ stretch main contrib non-free' \
+    | tee -a /etc/apt/sources.list.d/stretch.list && \
   apt-get update && \
   apt-get install -y --no-install-recommends openjdk-8-jre-headless && \
   rm /etc/apt/sources.list.d/stretch.list && \
