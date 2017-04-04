@@ -1,4 +1,4 @@
-FROM debian:stretch
+FROM debian:jessie-slim
 MAINTAINER brettm357@me.com
 
 # Set environment variables
