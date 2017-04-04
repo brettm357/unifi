@@ -42,7 +42,8 @@ RUN  echo "deb http://ftp.au.debian.org/debian stretch main" \
   apt-get --no-install-recommends -y install \
     jsvc \
     prelink \
-    mongodb-server && \    
+    mongodb-server \
+    wget && \
   wget -nv https://www.ubnt.com/downloads/unifi/$UNIFI_VERSION/unifi_sysvinit_all.deb && \ 
   dpkg --install unifi_sysvinit_all.deb && \ 
   # fix WebRTC stack guard error 
