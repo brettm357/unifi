@@ -32,7 +32,7 @@ RUN echo "deb http://ftp.au.debian.org/debian stretch main" \
     dpkg --install unifi_sysvinit_all.deb && \
   
   # fix WebRTC stack guard error 
-    execstack -c /usr/lib/unifi/lib/native/Linux/amd64/libubnt_webrtc_jni.so && \ 
+  # execstack -c /usr/lib/unifi/lib/native/Linux/amd64/libubnt_webrtc_jni.so && \ 
     rm unifi_sysvinit_all.deb && \ 
     apt-get -y autoremove wget prelink && \ 
     apt-get -q clean && \ 
