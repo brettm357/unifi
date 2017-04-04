@@ -16,7 +16,7 @@ RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10 && \
     | tee -a /etc/apt/sources.list.d/stretch.list && \
     apt-get update && \
     apt-get install -y \
-      gunpg2 && \
+      libassuan0 \
       openjdk-8-jre-headless && \
   #  rm /etc/apt/sources.list.d/stretch.list && \
   
