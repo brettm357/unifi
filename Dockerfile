@@ -13,7 +13,7 @@ RUN apt-get -y install \
     wget
     
 RUN wget -nv http://ftp.au.debian.org/debian/pool/main/g/gnupg2/gnupg2_2.1.18-6_all.deb && \
-    dkpg --install gnupg2_2.1.18-6_all.deb
+    dpkg --install gnupg2_2.1.18-6_all.deb
 
 RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10 && \
     echo "deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen" \
@@ -34,8 +34,7 @@ RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10 && \
  # apt-get update -q && \
   apt-get --no-install-recommends -y install \
     supervisor \
-    binutils \
-    wget && \
+    binutils && \
  # apt-get -t jessie-backports --no-install-recommends -y install \
  #   openjdk-8-jre-headless && \
   apt-get --no-install-recommends -y install \
