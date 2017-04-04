@@ -35,7 +35,7 @@ RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10 && \
 EXPOSE 3478/udp 6789/tcp 8080/tcp 8081/tcp 8443/tcp 8843/tcp 8880/tcp 
 
 # Set internal storage volume
-VOLUME ["/usr/lib/unifi""]
+VOLUME ["/usr/lib/unifi/data"]
 
 # Set working directory for program
 WORKDIR /usr/lib/unifi
