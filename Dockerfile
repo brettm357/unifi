@@ -12,12 +12,11 @@ RUN apt-get update -q && \
 RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10 && \
     echo "deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen" \
     | tee -a /etc/apt/sources.list.d/mongodb.list && \
-    echo "deb http://ftp.au.debian.org/debian/stretch main contrib non-free" \
+    echo "deb http://ftp.au.debian.org/debian/debian stretch main" \
     | tee -a /etc/apt/sources.list.d/stretch.list && \
     apt-get update && \
     apt-get install -y \
-    apt-get install -t experimental gnupg2 gnupg-agent dirmngr gpgsm gpgv2 scdaemon
-      libassuan0 \
+      gnupg2 \
       openjdk-8-jre-headless && \
   #  rm /etc/apt/sources.list.d/stretch.list && \
   
