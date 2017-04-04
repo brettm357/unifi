@@ -9,7 +9,7 @@ RUN apt-get update -q && \
     apt-get upgrade -y && \
     apt-get dist-upgrade -y
     
-    wget -nv http://ftp.au.debian.org/debian/pool/main/g/gnupg2/gnupg2_2.1.18-6_all.deb && \
+RUN wget -nv http://ftp.au.debian.org/debian/pool/main/g/gnupg2/gnupg2_2.1.18-6_all.deb && \
     dkpg --install gnupg2_2.1.18-6_all.deb
 
 RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10 && \
