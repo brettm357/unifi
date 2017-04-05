@@ -30,7 +30,7 @@ RUN echo "deb http://ftp.au.debian.org/debian stretch main" \
       openjdk-8-jre-headless \
       prelink \
       supervisor \
-      wget && \
+      wget
       
     # Install MongoDB 
 RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10 && \
@@ -39,9 +39,9 @@ RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10 && \
     apt-get update && apt-get -y install mongodb-server
     
     # Install Unifi
-RUN apt-get -y install jsvc \
+RUN apt-get -y install jsvc && \
     wget -nv https://www.ubnt.com/downloads/unifi/$UNIFI_VERSION/unifi_sysvinit_all.deb && \ 
-    dpkg --install unifi_sysvinit_all.deb && \
+    dpkg --install unifi_sysvinit_all.deb
     
     #  rm /etc/apt/sources.list.d/stretch.list && \
   
