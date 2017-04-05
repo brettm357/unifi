@@ -27,6 +27,7 @@ RUN echo "deb http://ftp.au.debian.org/debian stretch main" \
     apt-get update -q && \
     apt-get --no-install-recommends -y install \
       binutils \
+      gnupg2 \
       openjdk-8-jre-headless \
       prelink \
       supervisor \
