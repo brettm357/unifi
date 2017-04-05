@@ -24,20 +24,20 @@ RUN apt-get update -q && \
     # Install Packages
 RUN echo "deb http://ftp.au.debian.org/debian stretch main" \
     | tee -a /etc/apt/sources.list.d/stretch.list && \
-    apt-get update -q && \
-    apt-get --no-install-recommends -y install \
+    apt-get update -q && apt-get upgrade -y && \
+    apt-get -y install \
       binutils \
-      gnupg2 \
+      mongodb-server \
       openjdk-8-jre-headless \
       prelink \
       supervisor \
       wget
       
     # Install MongoDB 
-RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10 && \
-    echo "deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen" \
-    | tee /etc/apt/sources.list.d/mongodb.list && \
-    apt-get update && apt-get -y install mongodb-server
+#RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10 && \
+#    echo "deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen" \
+#    | tee /etc/apt/sources.list.d/mongodb.list && \
+#    apt-get update && apt-get -y install mongodb-server
     
     # Install Unifi
 RUN apt-get -y install jsvc && \
