@@ -15,24 +15,24 @@ RUN apt-get update -q && \
 RUN echo "deb http://ftp.au.debian.org/debian stretch main" \
     | tee -a /etc/apt/sources.list.d/stretch.list && \
     apt-get update -q && \
-    apt-get -y install \
-      gnupg \
-      gnupg2 \
-      openjdk-8-jre-headless && \
-  #  rm /etc/apt/sources.list.d/stretch.list && \
     apt-get --no-install-recommends -y install \
-      supervisor \
       binutils \
+      gnupg2 \
       jsvc \
-      prelink \
       mongodb-server \
+      openjdk-8-jre-headless \
+      prelink \
+      supervisor \
       wget && \
     
     wget -nv https://www.ubnt.com/downloads/unifi/$UNIFI_VERSION/unifi_sysvinit_all.deb && \ 
     dpkg --install unifi_sysvinit_all.deb && \
+    
+    #  rm /etc/apt/sources.list.d/stretch.list && \
   
   # fix WebRTC stack guard error 
-  # execstack -c /usr/lib/unifi/lib/native/Linux/amd64/libubnt_webrtc_jni.so && \ 
+    execstack -c /usr/lib/unifi/lib/native/Linux/x86_64/libubnt_webrtc_jni.so && \ 
+    
     rm unifi_sysvinit_all.deb && \ 
     apt-get -y autoremove wget prelink && \ 
     apt-get -q clean && \ 
