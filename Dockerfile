@@ -9,34 +9,46 @@ RUN apt-get update -q && \
     apt-get upgrade -y && \
     apt-get dist-upgrade -y
 
-RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10 && \
-    echo "deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen" \
-    | tee -a /etc/apt/sources.list.d/mongodb.list && \
-    apt-get update 
-    apt-get install mongodb-10gen
- 
+#RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10 && \
+#    echo "deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen" \
+#    | tee -a /etc/apt/sources.list.d/mongodb.list && \
+#    apt-get update 
+#    apt-get install mongodb-10gen
+    
+    # Install MongoDB 
+#RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10 && \
+#    echo "deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen" \
+#    | tee /etc/apt/sources.list.d/mongodb.list && \
+#    apt-get update && apt-get -y install mongodb-server
+
+    # Install Packages
 RUN echo "deb http://ftp.au.debian.org/debian stretch main" \
     | tee -a /etc/apt/sources.list.d/stretch.list && \
     apt-get update -q && \
     apt-get --no-install-recommends -y install \
       binutils \
-      gnupg2 \
-      jsvc \
-      mongodb-server \
       openjdk-8-jre-headless \
       prelink \
       supervisor \
       wget && \
+      
+    # Install MongoDB 
+RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10 && \
+    echo "deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen" \
+    | tee /etc/apt/sources.list.d/mongodb.list && \
+    apt-get update && apt-get -y install mongodb-server
     
+    # Install Unifi
+RUN apt-get -y install jsvc \
     wget -nv https://www.ubnt.com/downloads/unifi/$UNIFI_VERSION/unifi_sysvinit_all.deb && \ 
     dpkg --install unifi_sysvinit_all.deb && \
     
     #  rm /etc/apt/sources.list.d/stretch.list && \
   
   # fix WebRTC stack guard error 
-    execstack -c /usr/lib/unifi/lib/native/Linux/x86_64/libubnt_webrtc_jni.so && \ 
+RUN execstack -c /usr/lib/unifi/lib/native/Linux/x86_64/libubnt_webrtc_jni.so
     
-    rm unifi_sysvinit_all.deb && \ 
+RUN rm unifi_sysvinit_all.deb && \ 
     apt-get -y autoremove wget prelink && \ 
     apt-get -q clean && \ 
     rm -rf /var/lib/apt/lists/* /var/cache/apt/archives/*.deb /tmp/* /var/tmp/*  
