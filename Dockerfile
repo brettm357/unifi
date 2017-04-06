@@ -24,13 +24,14 @@ RUN apt-get update -q && \
     # Install Unifi
     apt-get -y install --no-install-recommends jsvc && \
     wget -nv https://www.ubnt.com/downloads/unifi/$UNIFI_VERSION/unifi_sysvinit_all.deb && \
-    dpkg --install unifi_sysvinit_all.deb && \    
+    dpkg --install unifi_sysvinit_all.deb && \
+    apt-get -y autoremove wget && \
+    rm unifi_sysvinit_all.deb && \    
     
     # Fix WebRTC stack guard error 
     execstack -c /usr/lib/unifi/lib/native/Linux/x86_64/libubnt_webrtc_jni.so && \
-    
-    rm unifi_sysvinit_all.deb && \ 
-    apt-get -y autoremove wget prelink && \ 
+    apt-get -y autoremove prelink &&\     
+     
     apt-get -q clean && \ 
     rm -rf /var/lib/apt/lists/* /var/cache/apt/archives/*.deb /tmp/* /var/tmp/*  
    
