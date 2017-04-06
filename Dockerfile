@@ -7,10 +7,10 @@ ENV UNIFI_VERSION 5.6.2-224554000b
 
 RUN apt-get update -q && \
     apt-get upgrade -y && \
-    apt-get dist-upgrade -y
+    apt-get dist-upgrade -y && \
 
     # Install Packages
-RUN echo "deb http://ftp.us.debian.org/debian stretch main" \
+    echo "deb http://ftp.us.debian.org/debian stretch main" \
     | tee -a /etc/apt/sources.list.d/stretch.list && \
     apt-get update -q && \
     apt-get -y install \
@@ -19,18 +19,18 @@ RUN echo "deb http://ftp.us.debian.org/debian stretch main" \
       openjdk-8-jre-headless \
       prelink \
       supervisor \
-      wget
+      wget && \
         
     # Install Unifi
-RUN apt-get -y install jsvc && \
+    apt-get -y install jsvc && \
     wget -nv https://www.ubnt.com/downloads/unifi/$UNIFI_VERSION/unifi_sysvinit_all.deb && \
     dpkg --install unifi_sysvinit_all.deb && \
     
     
     # Fix WebRTC stack guard error 
-    execstack -c /usr/lib/unifi/lib/native/Linux/x86_64/libubnt_webrtc_jni.so
+    execstack -c /usr/lib/unifi/lib/native/Linux/x86_64/libubnt_webrtc_jni.so && \
     
-RUN rm unifi_sysvinit_all.deb && \ 
+    rm unifi_sysvinit_all.deb && \ 
     apt-get -y autoremove wget prelink && \ 
     apt-get -q clean && \ 
     rm -rf /var/lib/apt/lists/* /var/cache/apt/archives/*.deb /tmp/* /var/tmp/*  
