@@ -13,7 +13,7 @@ RUN apt-get update -q && \
     echo "deb http://ftp.us.debian.org/debian stretch main" \
     | tee -a /etc/apt/sources.list.d/stretch.list && \
     apt-get update -q && \
-    apt-get -y install \
+    apt-get -y install --no-install-recommends \
       binutils \
       mongodb-server \
       openjdk-8-jre-headless \
@@ -22,7 +22,7 @@ RUN apt-get update -q && \
       wget && \
         
     # Install Unifi
-    apt-get -y install jsvc && \
+    apt-get -y install --no-install-recommends jsvc && \
     wget -nv https://www.ubnt.com/downloads/unifi/$UNIFI_VERSION/unifi_sysvinit_all.deb && \
     dpkg --install unifi_sysvinit_all.deb && \    
     
