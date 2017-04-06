@@ -24,8 +24,7 @@ RUN apt-get update -q && \
     # Install Unifi
     apt-get -y install jsvc && \
     wget -nv https://www.ubnt.com/downloads/unifi/$UNIFI_VERSION/unifi_sysvinit_all.deb && \
-    dpkg --install unifi_sysvinit_all.deb && \
-    
+    dpkg --install unifi_sysvinit_all.deb && \    
     
     # Fix WebRTC stack guard error 
     execstack -c /usr/lib/unifi/lib/native/Linux/x86_64/libubnt_webrtc_jni.so && \
@@ -35,13 +34,13 @@ RUN apt-get update -q && \
     apt-get -q clean && \ 
     rm -rf /var/lib/apt/lists/* /var/cache/apt/archives/*.deb /tmp/* /var/tmp/*  
    
-       # Forward ports
+    # Forward ports
 EXPOSE 3478/udp 6789/tcp 8080/tcp 8081/tcp 8443/tcp 8843/tcp 8880/tcp 
 
-       # Set internal storage volume
+    # Set internal storage volume
 VOLUME ["/usr/lib/unifi/data"]
 
-        # Set working directory for program
+    # Set working directory for program
 WORKDIR /usr/lib/unifi
 
     #  Add supervisor config
