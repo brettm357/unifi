@@ -23,11 +23,12 @@ RUN echo "deb http://ftp.us.debian.org/debian stretch main" \
         
     # Install Unifi
 RUN apt-get -y install jsvc && \
-    wget -nv https://www.ubnt.com/downloads/unifi/$UNIFI_VERSION/unifi_sysvinit_all.deb && \ 
+    wget -nv https://www.ubnt.com/downloads/unifi/$UNIFI_VERSION/unifi_sysvinit_all.deb && \
     dpkg --install unifi_sysvinit_all.deb
+    execstack -c /usr/lib/unifi/lib/native/Linux/x86_64/libubnt_webrtc_jni.so
     
     # Fix WebRTC stack guard error 
-RUN execstack -c /usr/lib/unifi/lib/native/Linux/x86_64/libubnt_webrtc_jni.so
+#RUN execstack -c /usr/lib/unifi/lib/native/Linux/x86_64/libubnt_webrtc_jni.so
     
 RUN rm unifi_sysvinit_all.deb && \ 
     apt-get -y autoremove wget prelink && \ 
