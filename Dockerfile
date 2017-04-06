@@ -10,7 +10,7 @@ RUN apt-get update -q && \
     apt-get dist-upgrade -y
 
     # Install Packages
-RUN echo "deb http://ftp.au.debian.org/debian stretch main" \
+RUN echo "deb http://ftp.us.debian.org/debian stretch main" \
     | tee -a /etc/apt/sources.list.d/stretch.list && \
     apt-get update -q && \
     apt-get -y install \
