@@ -44,7 +44,7 @@ VOLUME ["/usr/lib/unifi/data"]
     # SET WORKING DIRECTORY FOR PROGRAM
 WORKDIR /usr/lib/unifi
 
-    #  ADD SUPERVISOR CONFIG
+    # ADD SUPERVISOR CONFIG
 ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 CMD ["/usr/bin/supervisord"]
