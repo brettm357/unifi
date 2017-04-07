@@ -18,8 +18,8 @@ RUN apt-get update -q && \
       jsvc \
       mongodb-server \
       openjdk-8-jre-headless \
-      supervisor && \
-      #wget && \
+      supervisor \
+      wget && \
         
     # Install Unifi    
     #wget -nv https://www.ubnt.com/downloads/unifi/$UNIFI_VERSION/unifi_sysvinit_all.deb && \
