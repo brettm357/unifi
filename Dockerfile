@@ -15,18 +15,18 @@ RUN apt-get update -q && \
     apt-get update -q && \
     apt-get -y install --no-install-recommends \
       binutils \
+      jsvc \
       mongodb-server \
       openjdk-8-jre-headless \
       prelink \
       supervisor \
       wget && \
         
-    # Install Unifi
-    apt-get -y install --no-install-recommends jsvc && \
+    # Install Unifi    
     wget -nv https://www.ubnt.com/downloads/unifi/$UNIFI_VERSION/unifi_sysvinit_all.deb && \
     dpkg --install unifi_sysvinit_all.deb && \
+    rm unifi_sysvinit_all.deb && \
     apt-get -y autoremove wget && \
-    rm unifi_sysvinit_all.deb && \    
     
     # Fix WebRTC stack guard error 
     execstack -c /usr/lib/unifi/lib/native/Linux/x86_64/libubnt_webrtc_jni.so && \
