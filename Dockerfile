@@ -18,6 +18,7 @@ RUN apt-get update -q && \
       jsvc \
       mongodb-server \
       openjdk-8-jre-headless \
+      prelink \
       supervisor \
       wget && \
         
