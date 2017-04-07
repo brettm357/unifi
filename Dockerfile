@@ -25,7 +25,7 @@ RUN apt-get update -q && \
     # Install Unifi    
     wget -nv https://www.ubnt.com/downloads/unifi/$UNIFI_VERSION/unifi_sysvinit_all.deb && \
     #dpkg --install unifi_sysvinit_all.deb && \
-    #rm unifi_sysvinit_all.deb && \
+    rm unifi_sysvinit_all.deb && \
     #apt-get -y autoremove wget && \
     
     # Fix WebRTC stack guard error 
