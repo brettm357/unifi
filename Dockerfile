@@ -1,7 +1,7 @@
 FROM debian:stretch
 MAINTAINER brettm357@me.com
 
-    # Set environment variables
+    # SET ENVIROMENT VARIABLES
 ENV DEBIAN_FRONTEND noninteractive
 ENV UNIFI_VERSION 5.6.2-224554000b
 
