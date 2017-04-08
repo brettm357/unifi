@@ -47,5 +47,5 @@ WORKDIR /usr/lib/unifi
     # ADD SUPERVISOR CONFIG
 ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
-CMD ["/usr/bin/supervisord","--configuration=/etc/supervisor/supervisord.conf"]
+CMD ["/usr/bin/supervisord","-c=/etc/supervisor/supervisord.conf"]
 
