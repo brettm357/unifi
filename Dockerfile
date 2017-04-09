@@ -1,6 +1,10 @@
 FROM debian:stretch
 MAINTAINER brettm357@me.com
 
+ARG BUILD_DATE
+ARG VERSION 5.6.2
+LABEL build_version="brettm357 version:- ${VERSION} Build-date:- ${BUILD_DATE}"
+
     # SET ENVIROMENT VARIABLES
 ENV DEBIAN_FRONTEND noninteractive
 ENV UNIFI_VERSION 5.6.2-224554000b
