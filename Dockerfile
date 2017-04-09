@@ -6,7 +6,7 @@ ARG VERSION
 LABEL build_version="brettm357 version:- ${VERSION} Build-date:- ${BUILD_DATE}"
 
     # SET ENVIROMENT VARIABLES
-ENV DEBIAN_FRONTEND noninteractive
+ENV DEBIAN_FRONTEND="noninteractive"
 ENV UNIFI_VERSION 5.6.2-224554000b
 
 RUN apt-get update -q && \
