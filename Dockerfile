@@ -20,7 +20,7 @@ RUN apt-get update -q && \
     apt-get -y install --no-install-recommends \
       binutils \
       jsvc \
-      mongodb-server \
+      #mongodb-server \
       openjdk-8-jre-headless \
       prelink \
       supervisor \
