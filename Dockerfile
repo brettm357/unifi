@@ -9,12 +9,12 @@ LABEL build_version="brettm357 version:- ${VERSION} Build-date:- ${BUILD_DATE}"
 ENV DEBIAN_FRONTEND="noninteractive"
 ENV UNIFI_VERSION 5.6.2-224554000b
 
-#RUN apt-get update -q && \
-#    apt-get upgrade -y && \
-#    apt-get dist-upgrade -y && \
+RUN apt-get update -q && \
+    apt-get upgrade -y && \
+    apt-get dist-upgrade -y && \
 
     # INSTALL PACKAGES
-RUN echo "deb http://ftp.us.debian.org/debian stretch main" \
+    echo "deb http://ftp.us.debian.org/debian stretch main" \
     | tee -a /etc/apt/sources.list.d/stretch.list && \
     apt-get update -q && \
     apt-get upgrade -y && \
@@ -26,10 +26,10 @@ RUN echo "deb http://ftp.us.debian.org/debian stretch main" \
       openjdk-8-jre-headless \
       prelink \
       supervisor \
-      wget
+      wget \
         
     # INSTALL UNIFI    
-RUN wget -nv https://www.ubnt.com/downloads/unifi/$UNIFI_VERSION/unifi_sysvinit_all.deb && \
+    wget -nv https://www.ubnt.com/downloads/unifi/$UNIFI_VERSION/unifi_sysvinit_all.deb && \
     dpkg --install unifi_sysvinit_all.deb && \
     rm unifi_sysvinit_all.deb && \
     #apt-get -y autoremove wget && \
