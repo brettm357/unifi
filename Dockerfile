@@ -26,7 +26,7 @@ RUN echo "deb http://ftp.us.debian.org/debian stretch main" \
       openjdk-8-jre-headless \
       prelink \
       supervisor \
-      wget \
+      wget && \
         
     # INSTALL UNIFI    
     wget -nv https://www.ubnt.com/downloads/unifi/$UNIFI_VERSION/unifi_sysvinit_all.deb && \
