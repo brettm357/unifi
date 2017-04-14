@@ -35,6 +35,7 @@ RUN echo "deb http://ftp.us.debian.org/debian stretch main" \
     apt-get -y purge prelink &&\     
      
     apt-get -q clean && \ 
+    apt-get -y autoremove && \
     rm -rf /var/lib/apt/lists/* /var/cache/apt/archives/*.deb /tmp/* /var/tmp/*  
    
     # FORWARD PORTS
