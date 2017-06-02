@@ -18,6 +18,7 @@ RUN echo "deb http://ftp.us.debian.org/debian stretch main" \
     apt-get -y install --no-install-recommends \
       binutils \
       jsvc \
+      libcap2 \
       mongodb-server \
       openjdk-8-jre-headless \
       prelink \
