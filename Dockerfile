@@ -2,12 +2,12 @@ FROM debian:stretch
 MAINTAINER brettm357@me.com
 
 ARG BUILD_DATE
-ARG VERSION=5.6.23
+ARG VERSION=5.6.26
 LABEL build_version="brettm357 version:- ${VERSION} Build-date:- ${BUILD_DATE}"
 
     # SET ENVIROMENT VARIABLES
 ENV DEBIAN_FRONTEND noninteractive
-ENV UNIFI_VERSION 5.6.24-e2998a5aab
+ENV UNIFI_VERSION 5.6.26-f6a8a26e43
 
     # INSTALL PACKAGES
 RUN echo "deb http://ftp.us.debian.org/debian stretch main" \
