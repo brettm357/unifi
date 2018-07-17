@@ -10,7 +10,7 @@ ENV DEBIAN_FRONTEND noninteractive
 ENV UNIFI_VERSION 5.9.12-ZD3vz8Yw57I
 
     # INSTALL PACKAGES
-RUN echo "deb http://ftp.us.debian.org/debian stretch main" \
+RUN echo "deb http://ftp.us.debian.org/debian/dists stretch main" \
     | tee -a /etc/apt/sources.list.d/stretch.list && \
     apt-get update -q && \
     apt-get upgrade -y && \
