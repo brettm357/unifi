@@ -17,6 +17,7 @@ RUN echo "deb http://ftp.us.debian.org/debian/dists stretch main" \
     apt-get dist-upgrade -y && \
     apt-get -y install --no-install-recommends \
       binutils \
+      curl \
       jsvc \
       libcap2 \
       mongodb-server \
