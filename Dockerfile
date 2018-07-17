@@ -34,7 +34,7 @@ RUN echo "deb http://ftp.us.debian.org/debian stretch main" \
     
     # FIX WEBRTC STACK GUARD ERROR 
     execstack -c /usr/lib/unifi/lib/native/Linux/x86_64/libubnt_webrtc_jni.so && \
-    apt-get -y purge prelink &&\     
+    apt-get -y purge prelink && \     
      
     apt-get -q clean && \ 
     apt-get -y autoremove && \
