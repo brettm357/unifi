@@ -2,12 +2,12 @@ FROM debian:stretch
 LABEL maintainer="lestercovax@gmail.com"
 
 ARG BUILD_DATE
-ARG VERSION=5.10.24
+ARG VERSION=5.10.25
 LABEL build_version="lestercovax version:- ${VERSION} Build-date:- ${BUILD_DATE}"
 
     # SET ENVIROMENT VARIABLES
 ENV DEBIAN_FRONTEND noninteractive
-ENV UNIFI_VERSION 5.10.24
+ENV UNIFI_VERSION 5.10.25
 
     # INSTALL PACKAGES
 RUN echo "deb http://ftp.us.debian.org/debian stretch main" \
