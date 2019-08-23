@@ -26,8 +26,7 @@ RUN echo "deb http://ftp.us.debian.org/debian stretch main" \
       supervisor \
       wget && \        
     # INSTALL UNIFI    
-    wget -nv https://dl.ubnt.com/unifi/$UNIFI_VERSION/
-    unifi_sysvinit_all.deb && \    
+    wget -nv https://dl.ubnt.com/unifi/$UNIFI_VERSION/unifi_sysvinit_all.deb && \
     dpkg --install unifi_sysvinit_all.deb && \
     rm unifi_sysvinit_all.deb && \
     apt-get -y purge wget && \    
