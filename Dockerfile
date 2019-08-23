@@ -7,7 +7,7 @@ LABEL build_version="lestercovax version:- ${VERSION} Build-date:- ${BUILD_DATE}
 
     # SET ENVIROMENT VARIABLES
 ENV DEBIAN_FRONTEND noninteractive
-ENV UNIFI_VERSION 5.11.38
+ENV UNIFI_VERSION 5.11.38-65a83af88b
 
     # INSTALL PACKAGES
 RUN echo "deb http://ftp.us.debian.org/debian stretch main" \
