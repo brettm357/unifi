@@ -2,12 +2,12 @@ FROM debian:stretch
 LABEL maintainer="lestercovax@gmail.com"
 
 ARG BUILD_DATE
-ARG VERSION=5.10.27
+ARG VERSION=5.11.38
 LABEL build_version="lestercovax version:- ${VERSION} Build-date:- ${BUILD_DATE}"
 
     # SET ENVIROMENT VARIABLES
 ENV DEBIAN_FRONTEND noninteractive
-ENV UNIFI_VERSION 5.10.27
+ENV UNIFI_VERSION 5.11.38
 
     # INSTALL PACKAGES
 RUN echo "deb http://ftp.us.debian.org/debian stretch main" \
@@ -26,7 +26,8 @@ RUN echo "deb http://ftp.us.debian.org/debian stretch main" \
       supervisor \
       wget && \        
     # INSTALL UNIFI    
-    wget -nv https://dl.ubnt.com/unifi/$UNIFI_VERSION/unifi_sysvinit_all.deb && \    
+    wget -nv https://dl.ubnt.com/unifi/$UNIFI_VERSION/
+    unifi_sysvinit_all.deb && \    
     dpkg --install unifi_sysvinit_all.deb && \
     rm unifi_sysvinit_all.deb && \
     apt-get -y purge wget && \    
