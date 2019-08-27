@@ -38,7 +38,7 @@ RUN echo "deb http://ftp.us.debian.org/debian stretch main" \
     rm -rf /var/lib/apt/lists/* /var/cache/apt/archives/*.deb /tmp/* /var/tmp/*
     
     # FORWARD PORTS
-EXPOSE 3478/udp 6789/tcp 8080/tcp 8081/tcp 8443/tcp 8843/tcp 8880/tcp 
+EXPOSE 3478/udp 6789/tcp 8080/tcp 8081/tcp 8443/tcp 8843/tcp 8880/tcp 8883/tcp 
 
     # SET INTERNAL STORAGE VOLUME
 VOLUME ["/usr/lib/unifi/data"]
