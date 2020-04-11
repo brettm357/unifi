@@ -20,6 +20,7 @@ RUN echo "deb http://ftp.us.debian.org/debian stretch main" \
       curl \
       jsvc \
       libcap2 \
+      logrotate \
       mongodb-server \
       openjdk-8-jre-headless \
       prelink \
