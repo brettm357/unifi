@@ -1,4 +1,4 @@
-FROM debian:stretch
+FROM debian:buster
 MAINTAINER brettm357@me.com
 
 ARG BUILD_DATE
