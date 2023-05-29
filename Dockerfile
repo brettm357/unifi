@@ -2,12 +2,12 @@ FROM debian:buster
 MAINTAINER brettm357@me.com
 
 ARG BUILD_DATE
-ARG VERSION=7.2.92
+ARG VERSION=7.4.156
 LABEL build_version="brettm357 version:- ${VERSION} Build-date:- ${BUILD_DATE}"
 
     # SET ENVIROMENT VARIABLES
 ENV DEBIAN_FRONTEND noninteractive
-ENV UNIFI_VERSION 7.2.92
+ENV UNIFI_VERSION 7.4.156-6ee9e412d1
 
     # INSTALL PACKAGES
 RUN echo "deb http://ftp.us.debian.org/debian stretch main" \
@@ -27,7 +27,7 @@ RUN echo "deb http://ftp.us.debian.org/debian stretch main" \
       supervisor \
       wget && \        
     # INSTALL UNIFI    
-    wget -nv https://dl.ui.com/unifi/$UNIFI_VERSION/unifi_sysvinit_all.deb && \    
+    wget -nv https://dl.ui.com/unifi/$UNIFI_VERSION/unifi_sysvinit_all.deb && \      
     dpkg --install unifi_sysvinit_all.deb && \
     rm unifi_sysvinit_all.deb && \
     apt-get -y purge wget && \    
