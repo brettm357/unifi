@@ -1,4 +1,4 @@
-FROM debian:buster
+FROM debian:bullseye
 MAINTAINER brettm357@me.com
 
 ARG BUILD_DATE
