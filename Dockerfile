@@ -10,7 +10,7 @@ ENV DEBIAN_FRONTEND noninteractive
 ENV UNIFI_VERSION 7.4.156-6ee9e412d1
 
     # INSTALL PACKAGES
-RUN echo "deb http://deb.debian.org/debian bullseye main" \
+RUN echo "deb http://ftp.us.debian.org/debian bullseye main" \
     | tee -a /etc/apt/sources.list.d/bullseye.list && \
     apt-get update -q && \
     apt-get upgrade -y && \
