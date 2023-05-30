@@ -23,7 +23,7 @@ RUN echo "deb http://ftp.us.debian.org/debian bullseye main" \
       logrotate \
     # mongodb-server \
       openjdk-17-jre-headless \
-      prelink \
+    # prelink \
       supervisor \
       wget && \        
     # INSTALL UNIFI    
