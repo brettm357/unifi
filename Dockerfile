@@ -22,7 +22,7 @@ RUN echo "deb http://ftp.us.debian.org/debian bullseye main" \
       libcap2 \
       logrotate \
     # mongodb-server \
-      openjdk-17-jre-headless \
+      openjdk-11-jre-headless \
     # prelink \
       supervisor \
       wget && \        
