@@ -21,7 +21,7 @@ RUN echo "deb http://ftp.us.debian.org/debian bullseye main" \
       jsvc \
       libcap2 \
       logrotate \
-      mongodb-server \
+    # mongodb-server \
       openjdk-17-jre-headless \
       prelink \
       supervisor \
