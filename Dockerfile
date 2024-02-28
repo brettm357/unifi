@@ -23,19 +23,8 @@ WORKDIR /usr/lib/unifi
 
 COPY root /
 
-RUN set -x \
-    && groupadd -r unifi -g $PGID \
-    && useradd --no-log-init -r -u $PUID -g $PGID unifi \
-    && mkdir -p /usr/share/man/man1 \
-    && apt-get -qqy update \
-    && apt-get -qqy install apt-utils \
-    && apt-get -qqy --no-install-recommends install \
-        dirmngr gnupg2 > /dev/null \
-    && apt-get -qqy update \
-    && apt-get -qqy --no-install-recommends install \
-        binutils curl gosu \
-        libcap2 libcap2-bin procps > /dev/null \
-    && apt-get -qqy --no-install-recommends install \
+R
+    
         ca-certificates-java > /dev/null \
     && apt-get -qqy --no-install-recommends install \
         openjdk-17-jre-headless > /dev/null \
@@ -50,13 +39,7 @@ RUN set -x \
     && curl -sSL https://dl.ui.com/unifi/${VERSION}/unifi_sysvinit_all.deb -o /tmp/unifi-${VERSION}.deb \
     && apt-get -qqy purge \
         apt-utils dirmngr gnupg2 > /dev/null \
-    && apt-get -qqy autoremove --purge > /dev/null \
-    && apt-get -qqy clean autoclean > /dev/null \
-    && dpkg --force-all -i /tmp/unifi-${VERSION}.deb \
-    && rm -rf data logs run \
-    && bash -c 'mkdir -p {data,logs,run,cert}' \
-    && chown -R unifi:unifi /usr/lib/unifi \
-    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /var/log/*
+    
 
 EXPOSE 3478/udp 6789/tcp 8080/tcp 8443/tcp 8843/tcp 8880/tcp 10001/udp
 
