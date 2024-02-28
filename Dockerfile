@@ -4,16 +4,8 @@ ARG BUILD_DATE
 ARG VCS_REF
 ARG VERSION
 
-LABEL \
-    org.opencontainers.image.vendor="The Goofball - goofball222@gmail.com" \
-    org.opencontainers.image.url="https://github.com/goofball222/unifi" \
-    org.opencontainers.image.title="UniFi Controller" \
-    org.opencontainers.image.description="UniFi Controller" \
-    org.opencontainers.image.version=${VERSION}-Debian \
-    org.opencontainers.image.source="https://github.com/goofball222/unifi" \
-    org.opencontainers.image.revision=${VCS_REF} \
-    org.opencontainers.image.created=${BUILD_DATE} \
-    org.opencontainers.image.licenses="Apache-2.0"
+# LABEL \
+    
 
 ENV \
     BIND_PRIV=false \
