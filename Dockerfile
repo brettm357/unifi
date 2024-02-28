@@ -7,7 +7,7 @@ LABEL build_version="brettm357 version:- ${VERSION} Build-date:- ${BUILD_DATE}"
 
     # SET ENVIROMENT VARIABLES
 ENV DEBIAN_FRONTEND noninteractive
-ENV UNIFI_VERSION 7.4.156-6ee9e412d1
+ENV UNIFI_VERSION 8.1.107-1c7ac40f1d
 
     # INSTALL PACKAGES
 RUN echo "deb http://ftp.us.debian.org/debian bullseye main" \
@@ -27,7 +27,7 @@ RUN echo "deb http://ftp.us.debian.org/debian bullseye main" \
       supervisor \
       wget && \        
     # INSTALL UNIFI    
-    wget -nv https://dl.ui.com/unifi/$UNIFI_VERSION/unifi_sysvinit_all.deb && \      
+    wget -nv https://dl.ui.com/unifi/$UNIFI_VERSION/unifi_sysvinit_all.deb && \     
     dpkg --install unifi_sysvinit_all.deb && \
     rm unifi_sysvinit_all.deb && \
     apt-get -y purge wget && \    
